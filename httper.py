@@ -1,11 +1,9 @@
 
 
-
-# urllib
-# requests
 import requests
 class HTTP:
-    def get(self,url,return_json = True):
+    @staticmethod
+    def get(url,return_json = True):
         r = requests.get(url)
         # restful json 格式
         if r.status_code!=200:
