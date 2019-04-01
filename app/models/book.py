@@ -16,6 +16,7 @@ class Book(db.Model):
     publisher = Column(String(50))
     price = Column(String(20))
     pages = Column(Integer)
+
     pubdate = Column(String(20))
     summary = Column(String(1000))
     image = Column(String(50))
