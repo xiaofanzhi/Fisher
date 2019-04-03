@@ -6,6 +6,21 @@ from app.forms.book import SearchForm
 from . import web
 
 
+# 测试非隔离
+@web.route('/test')
+def test1():
+    from flask import  request
+    from app.libs.non_local import n
+    print(n.v)
+    n.v = 2
+    print('--------------------')
+    print(getattr(request,'v',None))
+    setattr(request,'v',2)
+    print('-------------------------')
+    return ''
+
+
+
 @web.route('/book/search/')
 def search():
     '''
