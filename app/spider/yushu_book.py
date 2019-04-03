@@ -10,7 +10,7 @@ class YuShuBook:
         url = cls.isbn_url.format(isbn)
         # result是json格式 在Python中json转化为字典
         result = HTTP.get(url)
-        #存入数据
+        #在这可以存入数据 缓存数据 减少api访问
         return result
     @classmethod
     def search_by_keyword(cls,keyword,page=1):
