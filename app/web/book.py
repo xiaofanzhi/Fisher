@@ -1,4 +1,4 @@
-from flask import jsonify,request,render_template
+from flask import jsonify,request,render_template,flash
 from app.libs.helper import is_isbn_oe_key
 from app.spider.yushu_book import YuShuBook
 from app.forms.book import SearchForm
@@ -23,7 +23,7 @@ import json
 #     return ''
 
 
-
+# 视图函数一点要有返回
 @web.route('/book/search')
 def search():
     '''
@@ -55,17 +55,29 @@ def search():
             # result = BookViewModel.package_collectioms(result, q)
 
         books.fill(yushu_book,q)
-        return json.dumps(books,default=lambda x: x.__dict__)
+        # return json.dumps(books,default=lambda x: x.__dict__)
         # return jsonify(books.__dict__)
     else:
-        return  jsonify(form.errors)
+        flash('搜索关键字不服个要求，请重新输入')
+        # return  jsonify(form.errors)
+    return render_template('search_result.html', books=books)
+
+@web.route('/book/<isbn>/detail')
+def book_detail(isbn):
+    pass
 
 
-@web.route('/test')
-def test():
-    r = {
-        'name':'fzx',
-        'age':18
-    }
-    # 模板html
-    return render_template('test.html',data = r, )
+
+
+
+
+
+# @web.route('/test')
+# def test():
+#     r = {
+#         'name':'fzx',
+#         'age':18
+#     }
+#     flash('fzx fzzf')
+#     # 模板html
+#     return render_template('test.html',data = r, )

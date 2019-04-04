@@ -7,6 +7,8 @@
         {{ data.name }}
     {% else %}
         {{ data.age }}
+        {% set messages = get_flashed_messages() %}
+        {{ messages }}
     {% endif %}
 {% endblock %}
 {# jinja2 #}
