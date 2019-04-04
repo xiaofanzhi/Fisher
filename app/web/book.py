@@ -1,10 +1,12 @@
-from flask import jsonify,request
+from flask import jsonify,request,render_template
 from app.libs.helper import is_isbn_oe_key
 from app.spider.yushu_book import YuShuBook
 from app.forms.book import SearchForm
 from  app.view_models.book import BookViewModel,BookCollection
 # 引入 init 中 web
 from . import web
+
+import json
 
 
 # # 测试非隔离
@@ -53,6 +55,17 @@ def search():
             # result = BookViewModel.package_collectioms(result, q)
 
         books.fill(yushu_book,q)
-        return jsonify(books.__dict__)
+        return json.dumps(books,default=lambda x: x.__dict__)
+        # return jsonify(books.__dict__)
     else:
         return  jsonify(form.errors)
+
+
+@web.route('/test')
+def test():
+    r = {
+        'name':'fzx',
+        'age':18
+    }
+    # 模板html
+    return render_template('test.html',data = r, )

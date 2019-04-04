@@ -28,7 +28,7 @@ class YuShuBook:
             self.books.append(data)
 
     def __fill_collection(self,data):
-            self.total = data['totals']
+            self.total = data['total']
             self.books = data['books']
 
     def search_by_keyword(self,keyword,page=1):

@@ -6,14 +6,14 @@ class BookViewModel:
         self.publisher = book['publisher'],
         self.author = '、'.join(book['author']),
         self.image = book['image'],
-        self.summary = ['summary'],
+        self.summary = book['summary'],
         self.pages = book['pages']
 
 class BookCollection:
     def __init__(self):
         self.total = 0
         self.books = []
-        self.keyword = ''
+        self.keyword = None
 
     #     接受鱼叔book
     def fill(self,yushu_book,keyword):

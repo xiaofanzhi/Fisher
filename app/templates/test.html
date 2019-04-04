@@ -1,0 +1,13 @@
+
+{% extends 'layout.html'%}
+
+{% block content %}
+    {{data.age}}
+    {% if data.age<18  %}
+        {{ data.name }}
+    {% else %}
+        {{ data.age }}
+    {% endif %}
+{% endblock %}
+{# jinja2 #}
+{# 模板语言 #}
