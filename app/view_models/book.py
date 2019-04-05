@@ -8,6 +8,8 @@ class BookViewModel:
         self.image = book['image']
         self.summary = book['summary']
         self.pages = book['pages']
+        self.isbn = book['isbn']
+        self.price = '￥' + book['price'] if book['price'] else book['price']
 
         # self.title = data['title']
         # self.author = '、'.join(data['author'])
@@ -15,6 +17,11 @@ class BookViewModel:
         # self.image = data['image']
         # self.summary = data['summary']
         # self.pages = data['pages']
+    @property
+    def intro(self):
+        # 返回false filter就从列表里剔除
+        intros = filter(lambda  x: True if x else False,[self.author,self.publisher,self.price])
+        return '/'.join(intros)
 
 
 class BookCollection:

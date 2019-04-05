@@ -10,6 +10,7 @@ def my_gifts():
 
 @web.route('/gifts/book/<isbn>')
 def save_to_gifts(isbn):
+    # 赠书视图逻辑从这开始
     pass
 
 

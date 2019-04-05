@@ -11,9 +11,6 @@ class YuShuBook:
         self.total = 0
         self.books = []
 
-
-
-
     def search_by_isbn(self,isbn):
         url = self.isbn_url.format(isbn)
         # result是json格式 在Python中json转化为字典
@@ -39,3 +36,7 @@ class YuShuBook:
 
     def calculate_start(self,page):
         return (page-1)*current_app.config['PER_PAGE']
+
+    @property
+    def first(self):
+        return self.books[0] if self.total>1 else None
