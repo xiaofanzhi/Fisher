@@ -1,9 +1,9 @@
 
 from sqlalchemy import Column, Integer,String
 from .base import db
+from .base import Base
 
-
-class Book(db.Model):
+class Book(Base):
     # 相关状态 数据
     id = Column(Integer,primary_key=True,autoincrement=True)
     title = Column(String(50),nullable=False)
