@@ -1,5 +1,5 @@
 from flask import jsonify,request,render_template,flash
-from app.libs.helper import is_isbn_oe_key
+from app.libs.helper import is_isbn_or_key
 from app.spider.yushu_book import YuShuBook
 from app.forms.book import SearchForm
 from  app.view_models.book import BookViewModel,BookCollection
@@ -41,7 +41,7 @@ def search():
     if form.validate():
         q = form.q.data.strip()
         page = form.page.data
-        isbn_or_key =is_isbn_oe_key(q)
+        isbn_or_key =is_isbn_or_key(q)
         yushu_book = YuShuBook()
 
         if isbn_or_key == 'isbn':
@@ -66,6 +66,7 @@ def search():
 def book_detail(isbn):
     yushu_book = YuShuBook()
     yushu_book.search_by_isbn(isbn)
+    a = yushu_book.first
     book = BookViewModel(yushu_book.first)
     return render_template('book_detail.html',book=book,wishes=[],gifts=[])
 

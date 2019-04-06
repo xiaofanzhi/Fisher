@@ -10,6 +10,8 @@ class BookViewModel:
         self.pages = book['pages']
         self.isbn = book['isbn']
         self.price = '￥' + book['price'] if book['price'] else book['price']
+        self.pubdate = book['pubdate']
+        self.binding = book['binding']
 
         # self.title = data['title']
         # self.author = '、'.join(data['author'])

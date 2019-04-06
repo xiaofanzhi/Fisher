@@ -1,4 +1,4 @@
-def is_isbn_oe_key(word):
+def is_isbn_or_key(word):
     '''
     :param word:
     :return:

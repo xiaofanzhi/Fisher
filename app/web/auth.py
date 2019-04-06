@@ -16,12 +16,13 @@ def register():
     # 错误信息在form.error
     form = RegisterForm(request.form)
     if request.method  == 'POST' and form.validate():
-        user = User()
-        # 用动态方法不需要一个个赋值
-        user.set_attrs(form.data)
-        # user.nickname = form.nickname.data
-        db.session.add(user)
-        db.session.commit()
+        with db.auto_commit():
+            user = User()
+            # 用动态方法不需要一个个赋值
+            user.set_attrs(form.data)
+            # user.nickname = form.nickname.dataGift
+            db.session.add(user)
+        # db.session.commit()
         return redirect(url_for('web.login'))
     return render_template('auth/register.html',form=form)
 
@@ -34,7 +35,7 @@ def login():
         if user and user.check_password(form.password.data):
             login_user(user,remember=True)
             next = request.args.get('next')
-            if not next or  not next.startswith('/'):
+            if not next or not next.startswith('/'):
                 next = url_for('web.index')
             return redirect(next)
         else:
