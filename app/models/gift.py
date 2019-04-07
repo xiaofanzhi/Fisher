@@ -1,7 +1,7 @@
 from sqlalchemy import Column, Integer, String, Boolean, ForeignKey, desc,func
 from sqlalchemy.orm import relationship
 
-from app.models.wish import Wish
+
 from app.spider.yushu_book import YuShuBook
 from .base import Base,db
 from flask import current_app
@@ -50,3 +50,6 @@ class Gift(Base):
         recent_gift = Gift.query.filter_by(launched=False).group_by(Gift.isbn).order_by(
             desc(Gift.create_time)).distinct().limit(current_app.config['RECENT_BOOK_COUNT']).all()
         return recent_gift
+
+
+from app.models.wish import Wish

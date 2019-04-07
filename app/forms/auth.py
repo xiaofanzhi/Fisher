@@ -29,3 +29,7 @@ class LoginForm(Form):
     email = StringField(validators=[DataRequired(),Length(3,64),Email(message='电子邮件格式错误')])
 
     password = PasswordField(validators=[DataRequired(message='密码不能为空'),Length(1,128)])
+
+
+class EmailForm(Form):
+    email = StringField(validators=[DataRequired(), Length(3, 64), Email(message='电子邮件格式错误')])
