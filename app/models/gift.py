@@ -27,6 +27,10 @@ class Gift(Base):
         return gifts
 
 
+    def is_yourself_gift(self,uid):
+        return True if self.uid == uid else False
+
+
     @classmethod
     def get_wish_counts(cls,isbn_list):
     #     db.session 做查询
