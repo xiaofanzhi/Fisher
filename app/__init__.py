@@ -1,5 +1,7 @@
 
 from flask import Flask
+
+
 from app.models.book import db
 from flask_login import LoginManager
 from flask_mail import Mail
@@ -22,6 +24,10 @@ def create_app():
     # 注册email模块
     mail.init_app(app)
 
+    from .admin import admin
+    admin.init_app(app)
+
+
     db.create_all(app=app)
 
 
@@ -29,5 +35,6 @@ def create_app():
 
 
 def register_blueprint(app):
-    from app.web.book import web
+    from app.web import web
     app.register_blueprint(web)
+

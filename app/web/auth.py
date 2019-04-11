@@ -6,7 +6,7 @@ from flask import render_template, request, redirect, url_for, flash
 from app.forms.auth import RegisterForm, LoginForm, EmailForm, ResetPasswordForm
 from flask_login import login_user, logout_user
 
-__author__ = '七月'
+
 
 
 @web.route('/register',methods=['GET', 'POST'])
